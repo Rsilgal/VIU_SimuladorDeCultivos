@@ -1,3 +1,6 @@
+from pyparsing import Or
+
+
 class Simulacion():
     def asignarCultivos(self,diccionarioParcelas, diccionarioCultivos,diccionarioAsignaciones): #Realiza la asiganción de los cultivos a la parcela correspondiente
         self.diccionarioParcelas = diccionarioParcelas
@@ -11,13 +14,9 @@ class Simulacion():
             for cultivo in diccionarioCultivos:
                 # Recisamos la existencia del identificador del cultivo en la lista de valores del diccionario de asignaciones.
                 # Si no está asignado, continuamos.
-                if (diccionarioCultivos[cultivo].identificador in list(diccionarioAsignaciones.values())):
-                    continue
+                if (diccionarioCultivos[cultivo].identificador in list(diccionarioAsignaciones.values())) or not (diccionarioParcelas[parcela].tipoSuelo in diccionarioCultivos[cultivo].posibleSuelo) or not (diccionarioParcelas[parcela].areaParcela >= diccionarioCultivos[cultivo].areaMinima):
                 # Comprobamos si el cultivo se puede plantar en el tipo de suelo de la parcela.
-                if not (diccionarioParcelas[parcela].tipoSuelo in diccionarioCultivos[cultivo].posibleSuelo):
-                    continue
                 # Comprobación de si la parcela tiene espacio suficiente para albergar el cultivo.
-                if not (diccionarioParcelas[parcela].areaParcela >= diccionarioCultivos[cultivo].areaMinima):
                     continue
                 # Si la diefrencia de tamaño entre parcela y cultivo es menor que las comprobaciones anteriores
                 if((int(diccionarioParcelas[parcela].areaParcela) - int(diccionarioCultivos[cultivo].areaMinima)) < dif_parcela_cultivo):
