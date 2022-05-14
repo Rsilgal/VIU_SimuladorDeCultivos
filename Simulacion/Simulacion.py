@@ -11,25 +11,32 @@ class Simulacion():
             for cultivo in diccionarioCultivos:
                 # Recisamos la existencia del identificador del cultivo en la lista de valores del diccionario de asignaciones.
                 # Si no está asignado, continuamos.
-                if not (diccionarioCultivos[cultivo].identificador in list(diccionarioAsignaciones.values())):
-                    # Comprobamos si el cultivo se puede plantar en el tipo de suelo de la parcela.
-                    if(diccionarioParcelas[parcela].tipoSuelo in diccionarioCultivos[cultivo].posibleSuelo):
-                        # Comprobación de si la parcela tiene espacio suficiente para albergar el cultivo.
-                        if(diccionarioParcelas[parcela].areaParcela >= diccionarioCultivos[cultivo].areaMinima):
-                            # Si la diefrencia de tamaño entre parcela y cultivo es menor que las comprobaciones anteriores
-                            if((int(diccionarioParcelas[parcela].areaParcela) - int(diccionarioCultivos[cultivo].areaMinima)) < dif_parcela_cultivo):
-                                # Guardamos el identificador del cultivo que mejor se adapta a la parcela
-                                id_cultivo_aux = diccionarioCultivos[cultivo].identificador
-                                # Guardamos un registro de la diferencias de tamaños para comprobar si hay otro cultivo que se adapte mejor
-                                dif_parcela_cultivo = int(diccionarioParcelas[parcela].areaParcela) - int(diccionarioCultivos[cultivo].areaMinima)
-                            
+                if (diccionarioCultivos[cultivo].identificador in list(diccionarioAsignaciones.values())):
+                    continue
+                # Comprobamos si el cultivo se puede plantar en el tipo de suelo de la parcela.
+                if not (diccionarioParcelas[parcela].tipoSuelo in diccionarioCultivos[cultivo].posibleSuelo):
+                    continue
+                # Comprobación de si la parcela tiene espacio suficiente para albergar el cultivo.
+                if not (diccionarioParcelas[parcela].areaParcela >= diccionarioCultivos[cultivo].areaMinima):
+                    continue
+                # Si la diefrencia de tamaño entre parcela y cultivo es menor que las comprobaciones anteriores
+                if((int(diccionarioParcelas[parcela].areaParcela) - int(diccionarioCultivos[cultivo].areaMinima)) < dif_parcela_cultivo):
+                    # Guardamos el identificador del cultivo que mejor se adapta a la parcela
+                    id_cultivo_aux = diccionarioCultivos[cultivo].identificador
+                    # Guardamos un registro de la diferencias de tamaños para comprobar si hay otro cultivo que se adapte mejor
+                    dif_parcela_cultivo = int(diccionarioParcelas[parcela].areaParcela) - int(diccionarioCultivos[cultivo].areaMinima)
+                
             if (id_cultivo_aux != 'NA'):
                 diccionarioAsignaciones[diccionarioParcelas[parcela].identificador] = id_cultivo_aux
                 print(diccionarioAsignaciones[diccionarioParcelas[parcela].identificador])
         
+        self.print_asignaciones(diccionarioAsignaciones)
+        
+
+    def print_asignaciones(self, diccionarioAsignaciones):
         for elemento in diccionarioAsignaciones:
             print("Para la parcela " + elemento + " ha sido asinado el cultivo " + diccionarioAsignaciones[elemento] + ".")
-        
+
     def simDuracion(self, tiempoSimulacion,diccionarioParcelas, diccionarioCultivos,diccionarioAsignaciones,diccionarioRegistro): #Simulamos el paso del tiempo en cada uno de las parcelas
         self.diccionarioParcelas = diccionarioParcelas
         self.diccionarioCultivos = diccionarioCultivos
