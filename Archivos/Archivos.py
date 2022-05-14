@@ -30,7 +30,7 @@ class Archivos():
                     print("Asignaciones")
                     fichero.write(self.formateo_datos_Asignaciones(diccionario) + '\n')
 
-        except BaseException as e:
+        except (FileExistsError, FileNotFoundError) as e:
             print(e.__doc__)
 
         finally:
@@ -42,7 +42,7 @@ class Archivos():
             lineas = fichero.readlines()
             return lineas                
 
-        except BaseException as e:
+        except (FileExistsError, FileNotFoundError) as e:
             print(e.__doc__)
 
         finally:
