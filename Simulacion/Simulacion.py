@@ -2,7 +2,7 @@ from pyparsing import Or
 
 
 class Simulacion():
-    def asignarCultivos(self,diccionarioParcelas, diccionarioCultivos,diccionarioAsignaciones): #Realiza la asiganción de los cultivos a la parcela correspondiente
+    def asignar_cultivos(self,diccionarioParcelas, diccionarioCultivos,diccionarioAsignaciones): #Realiza la asiganción de los cultivos a la parcela correspondiente
         self.diccionarioParcelas = diccionarioParcelas
         self.diccionarioCultivos = diccionarioCultivos
         self.diccionarioAsignaciones = diccionarioAsignaciones
@@ -36,7 +36,7 @@ class Simulacion():
         for elemento in diccionarioAsignaciones:
             print("Para la parcela " + elemento + " ha sido asinado el cultivo " + diccionarioAsignaciones[elemento] + ".")
 
-    def simDuracion(self, tiempoSimulacion,diccionarioParcelas, diccionarioCultivos,diccionarioAsignaciones,diccionarioRegistro): #Simulamos el paso del tiempo en cada uno de las parcelas
+    def simular_duracion(self, tiempoSimulacion,diccionarioParcelas, diccionarioCultivos,diccionarioAsignaciones,diccionarioRegistro): #Simulamos el paso del tiempo en cada uno de las parcelas
         self.diccionarioParcelas = diccionarioParcelas
         self.diccionarioCultivos = diccionarioCultivos
         self.diccionarioAsignaciones = diccionarioAsignaciones
@@ -66,7 +66,7 @@ class Simulacion():
                 except KeyError:
                     pass
 
-    def enviarDatosSimulacion(self, diccionarioCultivos, diccionarioAsignaciones):
+    def enviar_datos_simulacion(self, diccionarioCultivos, diccionarioAsignaciones):
         self.diccionarioCultivos = diccionarioCultivos
         self.diccionarioAsignaciones = diccionarioAsignaciones
         #Obtenemos la lista de claves del diccionario Asignaciones.
