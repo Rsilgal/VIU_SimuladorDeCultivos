@@ -1,4 +1,4 @@
-class Info_Sistema():
+class Info_sistema():
 
     def comparador_dicccionarios(self,diccionario_1,diccionario_2):
         '''
@@ -10,7 +10,7 @@ class Info_Sistema():
         diccionario_diferencias = {}
         
         for elemento in lista_diccionario_2:        # Recorremos cada uno de los elementos presentes en la lista_2 
-            if not elemento in lista_diccionario_1: # En el caso de que el elemento, de la lista_2, no este presente en la lista_1 
+            if elemento not in lista_diccionario_1: # En el caso de que el elemento, de la lista_2, no este presente en la lista_1 
                 diccionario_diferencias[elemento] = diccionario_2.get(elemento) # Agregaremos este elemento al diccionario de las diferencias
 
         return diccionario_diferencias

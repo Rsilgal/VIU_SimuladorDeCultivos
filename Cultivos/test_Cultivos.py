@@ -10,7 +10,7 @@ from Cultivos.Cultivos import Cultivos
         (1, 1, 0)
     ]
 )
-def test_dias_trasncurridos(duracionInicial, factor, expected):
-    cultivo = Cultivos('a','A',5,False,'B', duracionInicial)
+def test_dias_trasncurridos(duracion_inicial, factor, expected):
+    cultivo = Cultivos('a','A',5,False,'B', duracion_inicial)
     cultivo.diasTranscurridos(factorDecremento=factor)
     assert cultivo.duracionCultivo == expected

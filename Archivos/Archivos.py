@@ -19,16 +19,16 @@ class Archivos():
             for elemento in diccionario:
                 if accion == 0:
                     print("Parcela")
-                    fichero.write(self.formateo_datos_Parcela(diccionario[elemento]) + '\n')
+                    fichero.write(self.formateo_datos_parcela(diccionario[elemento]) + '\n')
                 if accion == 1:
                     print("Cultivo")
-                    fichero.write(self.formateo_datos_Cultivo(diccionario[elemento]) + '\n')
+                    fichero.write(self.formateo_datos_cultivo(diccionario[elemento]) + '\n')
                 if accion == 2:
                     print("Registro")
-                    fichero.write(self.formateo_datos_Registro(diccionario) + '\n')
+                    fichero.write(self.formateo_datos_registro(diccionario) + '\n')
                 if accion == 3:
                     print("Asignaciones")
-                    fichero.write(self.formateo_datos_Asignaciones(diccionario) + '\n')
+                    fichero.write(self.formateo_datos_asignaciones(diccionario) + '\n')
 
         except (FileExistsError, FileNotFoundError) as e:
             print(e.__doc__)
