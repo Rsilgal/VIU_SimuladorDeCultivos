@@ -1,4 +1,4 @@
-class Info_sistema():
+class InfoSistemas():
 
     def comparador_dicccionarios(self,diccionario_1,diccionario_2):
         '''

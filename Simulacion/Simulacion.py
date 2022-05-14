@@ -14,7 +14,7 @@ class Simulacion():
             for cultivo in diccionario_cultivos:
                 # Recisamos la existencia del identificador del cultivo en la lista de valores del diccionario de asignaciones.
                 # Si no está asignado, continuamos.
-                if (diccionario_cultivos[cultivo].identificador in list(diccionario_asignaciones.values())) or not (diccionario_parcelas[parcela].tipo_suelo in diccionario_cultivos[cultivo].posible_suelo) or not (diccionario_parcelas[parcela].areaParcela >= diccionario_cultivos[cultivo].area_minima):
+                if (diccionario_cultivos[cultivo].identificador in list(diccionario_asignaciones.values())) or (diccionario_parcelas[parcela].tipo_suelo not in diccionario_cultivos[cultivo].posible_suelo) or (diccionario_parcelas[parcela].areaParcela < diccionario_cultivos[cultivo].area_minima):
                 # Comprobamos si el cultivo se puede plantar en el tipo de suelo de la parcela.
                 # Comprobación de si la parcela tiene espacio suficiente para albergar el cultivo.
                     continue
@@ -42,12 +42,12 @@ class Simulacion():
         self.diccionario_asignaciones = diccionario_asignaciones
         self.diccionario_registro = diccionario_registro    
         #Obtenemos la lista de claves del diccionario Asignaciones.
-        dA = list(diccionario_asignaciones.keys()) # Entrega las claves de las parcelas
+        claves_asignaciones = list(diccionario_asignaciones.keys()) # Entrega las claves de las parcelas
         
         # Creamos un bucle en el que iteraremos hasta consumir los días a simular
-        for dia in range(0,tiempo_simulacion):
+        for _ in range(0,tiempo_simulacion):
             # Añadimos un bucle en el que recorreremos las parcelas para restar los días a los cultivos
-            for parcela in dA:
+            for parcela in claves_asignaciones:
                 try:
                     # Accedemos al cultivo desde el identificador de la parcela y restamos un día al cultivo
                     diccionario_cultivos[diccionario_asignaciones[parcela]].duracion_cultivo = int(diccionario_cultivos[diccionario_asignaciones[parcela]].duracion_cultivo) - 1
