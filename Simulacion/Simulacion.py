@@ -70,10 +70,10 @@ class Simulacion():
         self.diccionario_cultivos = diccionario_cultivos
         self.diccionario_asignaciones = diccionario_asignaciones
         #Obtenemos la lista de claves del diccionario Asignaciones.
-        dA = list(diccionario_asignaciones.keys()) # Entrega las claves de las parcelas
+        claves_asignaciones = list(diccionario_asignaciones.keys()) # Entrega las claves de las parcelas
         diccionario_retorno = {}
 
         # Añadimos un bucle en el que recorreremos las parcelas para restar los días a los cultivos
-        for parcela in dA:
+        for parcela in claves_asignaciones:
             diccionario_retorno[parcela] = diccionario_cultivos[diccionario_asignaciones[parcela]].duracion_cultivo
         return diccionario_retorno
