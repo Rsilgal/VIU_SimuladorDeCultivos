@@ -11,5 +11,5 @@ class Parcelas():
     def __str__(self): #Es el mensaje por defecto si imprimios la clase.
         return "La parcela cuyo ID es {0} tiene una area de {2} hectareas y un suelo del tipo {1}".format(self.identificador, self.tipoSuelo, self.areaParcela)
         
-    def transformacionSuelo(self, nuevoTipo): #Este método intercambia el tipo de suelo de la parcela por el indicado.
+    def transformacion_suelo(self, nuevoTipo): #Este método intercambia el tipo de suelo de la parcela por el indicado.
         self.tipoSuelo = nuevoTipo
