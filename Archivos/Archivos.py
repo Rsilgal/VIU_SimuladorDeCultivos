@@ -49,17 +49,17 @@ class Archivos():
             fichero.close()
 
 
-    def formateo_datos_Parcela(self,objeto):
+    def formateo_datos_parcela(self,objeto):
         return "{0}/{1}/{2}/".format(objeto.identificador,objeto.tipoSuelo,objeto.areaParcela)
 
-    def formateo_datos_Cultivo(self,objeto):
+    def formateo_datos_cultivo(self,objeto):
         return "{0}/{1}/{2}/{3}/{4}/{5}/".format(objeto.identificador,objeto.posibleSuelo,objeto.areaMinima,objeto.canTransformar,objeto.nuevoSuelo,objeto.duracionCultivo)
 
-    def formateo_datos_Registro(self,elemento):
+    def formateo_datos_registro(self,elemento):
         clave = list(elemento.keys())[0]
         return "{0}/{1}/".format(clave, elemento[clave])
 
 
-    def formateo_datos_Asignaciones(self, elemento):
+    def formateo_datos_asignaciones(self, elemento):
         clave = list(elemento.keys())[0]
         return "{0}/{1}/".format(clave, elemento[clave])
